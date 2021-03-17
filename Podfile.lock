@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (5.4.1)
+  - HandyJSON (5.0.2)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+
+DEPENDENCIES:
+  - HandyJSON
+  - Moya
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - HandyJSON
+    - Moya
+
+SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+
+PODFILE CHECKSUM: 35599bf3d9a43aaf9d64c3ff6f56491be04aa9b1
+
+COCOAPODS: 1.10.1
