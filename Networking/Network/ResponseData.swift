@@ -11,7 +11,7 @@ import HandyJSON
 public enum ResponseError: Error {
     case serviceError(code: Int, msg: String?)
     case deserializeError
-    case requestError
+    case networkError
 }
 
 struct ResponseData<T: HandyJSON>: HandyJSON {

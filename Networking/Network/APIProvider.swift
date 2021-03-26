@@ -85,7 +85,7 @@ extension MoyaProvider {
                 }
             case let .failure(error):
                 dlog("⛔️ \(target.path) 网络连接失败\(error)")
-                completion(.failure(.requestError))
+                completion(.failure(.networkError))
             }
         })
     }
