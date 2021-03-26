@@ -41,11 +41,13 @@ let myNetworkPlugin = NetworkActivityPlugin.init { changeType, _ in
 }
 
 extension MoyaProvider {
+     public typealias Completion = (_ result: Result<Moya.Response, MoyaError>) -> Void
+
     @discardableResult
     open func request<T: HandyJSON>(_ target: Target,
                                     progress: ProgressBlock? = .none,
                                     modelType: T.Type,
-                                    completion: ((_ success: Bool, _ model: T?, _ msg: String?, _ code: Int?) -> Void)?) -> Cancellable {
+                                    completion: @escaping (Result<T?, ResponseError>) -> Void) -> Cancellable {
         return request(target, completion: { result in
             if APIConfig.apiLogEnable {
                 dlog("🗣\(target.method)\nheaders: \(target.headers ?? ["": ""])\npath: \(target.path)")
@@ -64,26 +66,26 @@ extension MoyaProvider {
 
                     let data = ResponseData<T>.deserialize(from: jsonString)
                     let status = data?.status
-                    let code = data?.errorCode
+                    let code = data?.errorCode ?? 0
                     let msg = data?.errorMsg
 
                     if (status ?? "") == "OK" {
-                        let data = JSONDeserializer<ResponseData<T>>.deserializeFrom(json: jsonString)
-                        completion?(true, data?.content, nil, nil)
+                        let model = data?.content
+                        completion(.success(model))
                     } else {
                         if code == 501 {
                             dlog("未登录")
                         }
-                        dlog("erro: code = \(data?.errorCode ?? 0), msg = \(data?.errorMsg ?? "业务状态失败")")
-                        completion?(false, nil, msg, code)
+                        dlog("erro: code = \(code), msg = \(data?.errorMsg ?? "业务状态失败")")
+                        completion(.failure(.serviceError(code: code, msg: msg)))
                     }
                 } catch {
                     dlog("解析失败")
-                    completion?(false, nil, "解析失败", 400004)
+                    completion(.failure(.deserializeError))
                 }
             case let .failure(error):
                 dlog("⛔️ \(target.path) 网络连接失败\(error)")
-                completion?(false, nil, error.localizedDescription, error.errorCode)
+                completion(.failure(.requestError))
             }
         })
     }

@@ -75,7 +75,7 @@
 		38D5E8572600AA1E007C35DE /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				38D5E8722600AA5B007C35DE /* API */,
+				38D5E8722600AA5B007C35DE /* Network */,
 				38D5E8582600AA1E007C35DE /* AppDelegate.swift */,
 				38D5E85A2600AA1E007C35DE /* SceneDelegate.swift */,
 				38D5E85C2600AA1E007C35DE /* ViewController.swift */,
@@ -89,7 +89,7 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		38D5E8722600AA5B007C35DE /* API */ = {
+		38D5E8722600AA5B007C35DE /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				38D5E8832600AF98007C35DE /* ResponseData.swift */,
@@ -97,7 +97,7 @@
 				38D5E8772600AD48007C35DE /* APIProvider.swift */,
 				38D5E8A52601D3D1007C35DE /* PostsAPI.swift */,
 			);
-			path = API;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		5A6E26F322DC842F24E2AB9D /* Pods */ = {

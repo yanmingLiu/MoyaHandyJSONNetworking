@@ -8,6 +8,12 @@
 import Foundation
 import HandyJSON
 
+public enum ResponseError: Error {
+    case serviceError(code: Int, msg: String?)
+    case deserializeError
+    case requestError
+}
+
 struct ResponseData<T: HandyJSON>: HandyJSON {
     var errorMsg: String?
     var errorCode: Int?
