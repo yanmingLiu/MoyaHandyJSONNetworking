@@ -41,8 +41,6 @@ let myNetworkPlugin = NetworkActivityPlugin.init { changeType, _ in
 }
 
 extension MoyaProvider {
-     public typealias Completion = (_ result: Result<Moya.Response, MoyaError>) -> Void
-
     @discardableResult
     open func request<T: HandyJSON>(_ target: Target,
                                     progress: ProgressBlock? = .none,
@@ -59,7 +57,7 @@ extension MoyaProvider {
                     let jsonObject = try JSONSerialization.jsonObject(with: response.data)
                     let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
                     let jsonString = String(data: jsonData, encoding: .utf8) ?? String(data: response.data, encoding: .utf8) ?? ""
-                    
+
                     if APIConfig.apiLogEnable {
                         dlog("👉 response:\n\(jsonString)")
                     }
