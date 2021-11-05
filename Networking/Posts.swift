@@ -37,7 +37,6 @@ struct Posts: HandyJSON {
     var browseCount: Int! = 0
     var deviceName: String?
     var isDelete: Bool = false
-
 }
 
 struct Picture: HandyJSON {

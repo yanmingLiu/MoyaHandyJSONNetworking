@@ -43,9 +43,10 @@ let myNetworkPlugin = NetworkActivityPlugin.init { changeType, _ in
 extension MoyaProvider {
     @discardableResult
     open func request<T: HandyJSON>(_ target: Target,
-                                    progress: ProgressBlock? = .none,
-                                    modelType: T.Type,
-                                    completion: @escaping (Result<T?, ResponseError>) -> Void) -> Cancellable {
+                                    progress _: ProgressBlock? = .none,
+                                    modelType _: T.Type,
+                                    completion: @escaping (Result<T?, ResponseError>) -> Void) -> Cancellable
+    {
         return request(target, completion: { result in
             if APIConfig.apiLogEnable {
                 dlog("🗣\(target.method)\nheaders: \(target.headers ?? ["": ""])\npath: \(target.path)")

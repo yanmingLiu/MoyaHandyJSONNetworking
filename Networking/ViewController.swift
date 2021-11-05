@@ -61,18 +61,17 @@ class ViewController: UIViewController {
 
             case let .failure(error):
                 print(error)
-                break
             }
         }
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return dataList.count
     }
 

@@ -20,14 +20,14 @@ struct APIConfig {
         case product
         case appStore
     }
-    
+
     static var headers: [String: String]? {
         let uuid = UIDevice.current.identifierForVendor?.uuidString ?? ""
         return ["content-type": "application/json",
                 "accept": "application/json,text/plain",
                 "deviceId": uuid]
     }
-    
+
     static var host: String {
         switch environment {
         case .dev:

@@ -38,11 +38,10 @@ extension PostsAPI: TargetType {
         var params = [String: Any]()
 
         switch self {
-
-        case .recommendList(size: let size):
+        case let .recommendList(size: size):
             params = ["size": size]
         }
-        
+
         return .requestParameters(parameters: params, encoding: JSONEncoding.default)
     }
 
