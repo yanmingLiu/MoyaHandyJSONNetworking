@@ -49,7 +49,7 @@ extension MoyaProvider {
     {
         return request(target, completion: { result in
             if APIConfig.apiLogEnable {
-                dlog("🗣\(target.method)\nheaders: \(target.headers ?? ["": ""])\npath: \(target.path)")
+                dLog("🗣\(target.method)\n headers: \(target.headers ?? ["": ""])\n path: \(target.path)\n params:\(target.task)")
             }
 
             switch result {
@@ -60,7 +60,7 @@ extension MoyaProvider {
                     let jsonString = String(data: jsonData, encoding: .utf8) ?? String(data: response.data, encoding: .utf8) ?? ""
 
                     if APIConfig.apiLogEnable {
-                        dlog("👉 response:\n\(jsonString)")
+                        dLog("👉 response:\n\(jsonString)")
                     }
 
                     let data = ResponseData<T>.deserialize(from: jsonString)
@@ -73,17 +73,17 @@ extension MoyaProvider {
                         completion(.success(model))
                     } else {
                         if code == 501 {
-                            dlog("未登录")
+                            dLog("未登录")
                         }
-                        dlog("erro: code = \(code), msg = \(data?.errorMsg ?? "业务状态失败")")
+                        dLog("erro: code = \(code), msg = \(data?.errorMsg ?? "业务状态失败")")
                         completion(.failure(.serviceError(code: code, msg: msg)))
                     }
                 } catch {
-                    dlog("解析失败")
+                    dLog("解析失败")
                     completion(.failure(.deserializeError))
                 }
             case let .failure(error):
-                dlog("⛔️ \(target.path) 网络连接失败\(error)")
+                dLog("⛔️ \(target.path) 网络连接失败\(error)")
                 completion(.failure(.networkError))
             }
         })
@@ -91,7 +91,7 @@ extension MoyaProvider {
 }
 
 /// 打印
-func dlog<T>(_ message: T, file: StaticString = #file, method: String = #function, line: Int = #line) {
+func dLog<T>(_ message: T, file: StaticString = #file, method: String = #function, line: Int = #line) {
     #if DEBUG
         let fileName = (file.description as NSString).lastPathComponent
         print("\n\(fileName) \(method)[\(line)]:\n\(message)\n")

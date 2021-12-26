@@ -30,3 +30,9 @@ struct ResponsePageData<T: HandyJSON>: HandyJSON {
 }
 
 extension Array: HandyJSON {}
+
+extension String: HandyJSON {}
+
+extension Int: HandyJSON {}
+
+extension Double: HandyJSON {}
