@@ -27,6 +27,26 @@ let myRequestClosure = { (endpoint: Endpoint, done: MoyaProvider.RequestResultCl
     do {
         var request = try endpoint.urlRequest()
         request.timeoutInterval = 30
+        // 加密
+        /*
+         if isEncryption {
+             let body = request.httpBody ?? Data()
+             let str = String(data:body, encoding: .utf8)
+             if APIConfig.apiLogEnable {
+                 dLog("⚠️ request加密前参数：\(str ?? "")")
+             }
+             let key = "xxxx".md5().uppercased()
+             let aes = try AES(key: key, iv: "xxxxx")
+             let encrypted = try aes.encrypt(str!.bytes)
+             let result = encrypted.toBase64()
+             if APIConfig.apiLogEnable {
+                 dLog("⚠️ request加密结果：\(result)")
+             }
+             let dic = ["key": result]
+             let httpBody = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+             request.httpBody = httpBody
+         }
+         */
         done(.success(request))
     } catch {
         done(.failure(MoyaError.underlying(error, nil)))
