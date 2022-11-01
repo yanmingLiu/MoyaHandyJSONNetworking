@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		38CFD097290FA50400CC6C81 /* ExampleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CFD096290FA50400CC6C81 /* ExampleAPI.swift */; };
-		38CFD099290FA8CC00CC6C81 /* ExampleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CFD098290FA8CC00CC6C81 /* ExampleModel.swift */; };
 		38D5E8592600AA1E007C35DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8582600AA1E007C35DE /* AppDelegate.swift */; };
 		38D5E85B2600AA1E007C35DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E85A2600AA1E007C35DE /* SceneDelegate.swift */; };
 		38D5E85D2600AA1E007C35DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E85C2600AA1E007C35DE /* ViewController.swift */; };
@@ -19,13 +17,13 @@
 		38D5E8782600AD48007C35DE /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8772600AD48007C35DE /* APIProvider.swift */; };
 		38D5E8842600AF98007C35DE /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8832600AF98007C35DE /* ResponseData.swift */; };
 		38D5E8A72601D3D1007C35DE /* PostsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8A52601D3D1007C35DE /* PostsAPI.swift */; };
+		38D5E8A82601D3D1007C35DE /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8A62601D3D1007C35DE /* Posts.swift */; };
+		38D5E8AB2601D3D9007C35DE /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D5E8AA2601D3D9007C35DE /* Comment.swift */; };
 		9D4127FA592604A49C3C7B9D /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14E3FAD723BF4DC3A1F6F196 /* Pods_Networking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14E3FAD723BF4DC3A1F6F196 /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38CFD096290FA50400CC6C81 /* ExampleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAPI.swift; sourceTree = "<group>"; };
-		38CFD098290FA8CC00CC6C81 /* ExampleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleModel.swift; sourceTree = "<group>"; };
 		38D5E8552600AA1E007C35DE /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38D5E8582600AA1E007C35DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38D5E85A2600AA1E007C35DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +36,8 @@
 		38D5E8772600AD48007C35DE /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		38D5E8832600AF98007C35DE /* ResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		38D5E8A52601D3D1007C35DE /* PostsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsAPI.swift; sourceTree = "<group>"; };
+		38D5E8A62601D3D1007C35DE /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		38D5E8AA2601D3D9007C35DE /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		B2552FC79FA023D67B56392D /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		C5C98868D3422078F4D220C6 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +79,8 @@
 				38D5E8582600AA1E007C35DE /* AppDelegate.swift */,
 				38D5E85A2600AA1E007C35DE /* SceneDelegate.swift */,
 				38D5E85C2600AA1E007C35DE /* ViewController.swift */,
+				38D5E8A62601D3D1007C35DE /* Posts.swift */,
+				38D5E8AA2601D3D9007C35DE /* Comment.swift */,
 				38D5E85E2600AA1E007C35DE /* Main.storyboard */,
 				38D5E8612600AA1F007C35DE /* Assets.xcassets */,
 				38D5E8632600AA1F007C35DE /* LaunchScreen.storyboard */,
@@ -94,8 +96,6 @@
 				38D5E8742600AA71007C35DE /* APIConfig.swift */,
 				38D5E8772600AD48007C35DE /* APIProvider.swift */,
 				38D5E8A52601D3D1007C35DE /* PostsAPI.swift */,
-				38CFD096290FA50400CC6C81 /* ExampleAPI.swift */,
-				38CFD098290FA8CC00CC6C81 /* ExampleModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -214,13 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				38D5E85D2600AA1E007C35DE /* ViewController.swift in Sources */,
-				38CFD097290FA50400CC6C81 /* ExampleAPI.swift in Sources */,
-				38CFD099290FA8CC00CC6C81 /* ExampleModel.swift in Sources */,
 				38D5E8842600AF98007C35DE /* ResponseData.swift in Sources */,
 				38D5E8592600AA1E007C35DE /* AppDelegate.swift in Sources */,
 				38D5E8A72601D3D1007C35DE /* PostsAPI.swift in Sources */,
+				38D5E8AB2601D3D9007C35DE /* Comment.swift in Sources */,
 				38D5E8782600AD48007C35DE /* APIProvider.swift in Sources */,
 				38D5E8752600AA71007C35DE /* APIConfig.swift in Sources */,
+				38D5E8A82601D3D1007C35DE /* Posts.swift in Sources */,
 				38D5E85B2600AA1E007C35DE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

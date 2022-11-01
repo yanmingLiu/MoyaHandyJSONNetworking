@@ -13,4 +13,6 @@ target 'Networking' do
   # Pods for Networking
 
     pod 'Moya'
+    pod 'HandyJSON'
+
 end

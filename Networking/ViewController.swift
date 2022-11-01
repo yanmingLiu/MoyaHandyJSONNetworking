@@ -10,13 +10,17 @@ import UIKit
 let cellId = "cell"
 
 class ViewController: UIViewController {
-    var dataList = [String]()
+    var dataList = [Posts]()
+
+    var isGreater10000: Bool = false
+
+    var isNoMoreData: Bool = false
+
+    var pullDown: Bool = true
 
     var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.estimatedRowHeight = 50
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.backgroundColor = UIColor.white
+        tableView.rowHeight = 50
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         return tableView
     }()
@@ -38,24 +42,22 @@ class ViewController: UIViewController {
     }
 
     func loadData() {
-        let api = ExampleAPI.jsonOnline(long: 121.04925573429551, lat: 31.315590522490712)
-        ExampleProvider.request(api, modelType: ExampleModel.self) {
-            [weak self] result in
+        PostsProvider.request(.recommendList(size: 10),
+                              modelType: ResponsePageData<Posts>.self) { [weak self] result in
             switch result {
-            case let .success(data):
-                guard let self = self, let model = data else { return }
+            case let .success(model):
+                guard let sself = self else { return }
+                let array = model?.datas ?? []
+                sself.isNoMoreData = array.count < 10
+                sself.isGreater10000 = (model?.tc ?? 0) >= 10000
 
-                    let country = (model.country ?? "") + (model.countrycode ?? "")
-                    let province = (model.province ?? "") + (model.provinceadcode ?? "")
-                    let city = (model.city ?? "") + (model.cityadcode ?? "")
-                    let district = (model.district ?? "") + (model.districtadcode ?? "")
+                if sself.pullDown {
+                    sself.dataList.insert(contentsOf: array, at: 0)
 
-                    let str = country + province + city + district
-                    self.dataList.append(str)
-
-                    let list = model.poiList?.compactMap{($0.name ?? "") + ($0.address ?? "")} ?? [String]()
-                    self.dataList.append(contentsOf: list)
-                    self.tableView.reloadData()
+                } else {
+                    sself.dataList.append(contentsOf: array)
+                }
+                sself.tableView.reloadData()
 
             case let .failure(error):
                 print(error)
@@ -65,6 +67,9 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in _: UITableView) -> Int {
+        return 1
+    }
 
     func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return dataList.count
@@ -72,9 +77,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let str = dataList[indexPath.row]
-        cell.textLabel?.text = str
-        cell.textLabel?.numberOfLines = 0
+        let model = dataList[indexPath.row]
+        cell.textLabel?.text = model.title
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var model = dataList[indexPath.row]
+        model.title = "title for indexPath \(indexPath.row)"
+        dataList[indexPath.row] = model
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HandyJSON
 import Moya
 
 struct APIConfig {
