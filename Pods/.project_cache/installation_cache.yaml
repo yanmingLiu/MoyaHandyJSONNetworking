@@ -1,0 +1,39 @@
+BUILD_CONFIGURATIONS:
+  Debug: :debug
+  Release: :release
+CACHE_KEYS:
+  Alamofire:
+    BUILD_SETTINGS_CHECKSUM:
+      Alamofire:
+        :debug: c997d763ac967940ac3ff931321d5ccb
+        :release: c997d763ac967940ac3ff931321d5ccb
+    CHECKSUM: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+    PROJECT_NAME: Alamofire
+    SPECS:
+      - Alamofire (5.4.1)
+  HandyJSON:
+    BUILD_SETTINGS_CHECKSUM:
+      HandyJSON:
+        :debug: 24b20887caf22b5027542c5094b2dfe4
+        :release: 24b20887caf22b5027542c5094b2dfe4
+    CHECKSUM: 9e4e236f5d2dbefad5155a77417bbea438201c03
+    PROJECT_NAME: HandyJSON
+    SPECS:
+      - HandyJSON (5.0.2)
+  Moya:
+    BUILD_SETTINGS_CHECKSUM:
+      Moya:
+        :debug: c31f6339b9f1b9f543535413696ffea9
+        :release: c31f6339b9f1b9f543535413696ffea9
+    CHECKSUM: 5b45dacb75adb009f97fde91c204c1e565d31916
+    PROJECT_NAME: Moya
+    SPECS:
+      - Moya (14.0.0)
+      - Moya/Core (14.0.0)
+  Pods-Networking:
+    BUILD_SETTINGS_CHECKSUM:
+      Debug: 35993a2c23b28210698650c920de4b03
+      Release: 35993a2c23b28210698650c920de4b03
+OBJECT_VERSION: 51
+PLUGINS:
+  {}
