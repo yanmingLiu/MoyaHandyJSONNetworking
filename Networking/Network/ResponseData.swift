@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import HandyJSON
 
 public enum ResponseError: Error {
     case serviceError(code: Int, msg: String?)
@@ -14,25 +13,16 @@ public enum ResponseError: Error {
     case networkError
 }
 
-struct ResponseData<T: HandyJSON>: HandyJSON {
+struct ResponseData<T: Codable>: Codable {
     var errorMsg: String?
-    var errorCode: Int?
-    var status: String!
-    var content: T?
+    var status: String?
+    var data: T?
 }
 
-struct ResponsePageData<T: HandyJSON>: HandyJSON {
+struct ResponsePageData<T: Codable>: Codable {
     var datas: [T]?
     var tc: Int?
     var pn: Int?
     var ps: Int?
     var sortType: String?
 }
-
-extension Array: HandyJSON {}
-
-extension String: HandyJSON {}
-
-extension Int: HandyJSON {}
-
-extension Double: HandyJSON {}
