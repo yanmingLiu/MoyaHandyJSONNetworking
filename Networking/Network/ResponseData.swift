@@ -5,6 +5,7 @@
 //  Created by lym on 2021/1/3.
 //
 
+import BetterCodable
 import Foundation
 
 public enum ResponseError: Error {
@@ -15,7 +16,7 @@ public enum ResponseError: Error {
 
 struct ResponseData<T: Codable>: Codable {
     var errorMsg: String?
-    var status: String?
+    @LosslessValue var status: Int
     var data: T?
 }
 

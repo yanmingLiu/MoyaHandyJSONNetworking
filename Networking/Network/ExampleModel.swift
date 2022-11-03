@@ -5,76 +5,84 @@
 //  Created by lym on 2022/10/31.
 //
 
+import BetterCodable
 import Foundation
 
 // MARK: - DataClass
+
 struct ExampleModel: Codable {
-    var code: String?
-    var message: String?
-    var result: String?
-    var timestamp: String?
-    var version: String?
-    var country: String?
-    var countrycode: String?
-    var province: String?
-    var provinceadcode: String?
-    var city: String?
-    var cityadcode: String?
-    var tel: String?
-    var areacode: String?
-    var district: String?
-    var districtadcode: String?
-    var adcode: String?
-    var desc: String?
-    var poiList: [PoiList]?
-    var roadList: [List]?
-    var crossList: [List]?
-    var hn: String?
-    var seaArea: SeaArea?
-    var pos: String?
+    @LosslessValue var code: String
+    @LosslessValue var message: String
+    @DefaultFalse var result: Bool
+    @LosslessValue var timestamp: String
+    @LosslessValue var version: String
+    @LosslessValue var country: String
+    @LosslessValue var countrycode: String
+    @LosslessValue var province: String
+    @LosslessValue var provinceadcode: String
+    @LosslessValue var city: String
+    @LosslessValue var cityadcode: String
+    @LosslessValue var tel: String
+    @LosslessValue var areacode: String
+    @LosslessValue var district: String
+    @LosslessValue var districtadcode: String
+    @LosslessValue var adcode: String
+    @LosslessValue var desc: String
+    @DefaultEmptyArray var poiList: [PoiList]
+    @DefaultEmptyArray var roadList: [List]
+    @DefaultEmptyArray var crossList: [List]
+    @LosslessValue var hn: String
+    @DefaultCodable<SeaArea> var seaArea: SeaArea
+    @LosslessValue var pos: String
 }
 
 // MARK: - List
+
 struct List: Codable {
-    var crossid: String?
-    var direction: String?
-    var distance: String?
-    var latitude: String?
-    var level: String?
-    var longitude: String?
-    var name: String?
-    var weight: String?
-    var width: String?
-    var roadid: String?
+    @LosslessValue var crossid: String
+    @LosslessValue var direction: String
+    @LosslessValue var distance: String
+    @LosslessValue var latitude: String
+    @LosslessValue var level: String
+    @LosslessValue var longitude: String
+    @LosslessValue var name: String
+    @LosslessValue var weight: String
+    @LosslessValue var width: String
+    @LosslessValue var roadid: String
 }
 
 // MARK: - PoiList
+
 struct PoiList: Codable {
-    var address: String?
-    var childtype: String?
-    var direction: String?
-    var distance: String?
-    var endPoiExtension: String?
-    var entrances: [Entrance]?
-    var latitude: String?
-    var longitude: String?
-    var name: String?
-    var poiid: String?
-    var tel: String?
-    var towardsAngle: String?
-    var type: String?
-    var typecode: String?
-    var weight: String?
+    @LosslessValue var address: String
+    @LosslessValue var childtype: String
+    @LosslessValue var direction: String
+    @LosslessValue var distance: String
+    @LosslessValue var endPoiExtension: String
+    @DefaultEmptyArray var entrances: [Entrance]
+    @LosslessValue var latitude: String
+    @LosslessValue var longitude: String
+    @LosslessValue var name: String
+    @LosslessValue var poiid: String
+    @LosslessValue var tel: String
+    @LosslessValue var towardsAngle: String
+    @LosslessValue var type: String
+    @LosslessValue var typecode: String
+    @LosslessValue var weight: String
 }
 
 // MARK: - Entrance
+
 struct Entrance: Codable {
-    var latitude: String?
-    var longitude: String?
+    @LosslessValue var latitude: String
+    @LosslessValue var longitude: String
 }
 
 // MARK: - SeaArea
-struct SeaArea: Codable {
-    var adcode: String?
-    var name: String?
+
+struct SeaArea: Codable, DefaultCodableStrategy {
+    static var defaultValue: SeaArea { return SeaArea(adcode: "", name: "") }
+
+    @LosslessValue var adcode: String
+    @LosslessValue var name: String
 }

@@ -8,28 +8,27 @@
 import Foundation
 import Moya
 
-//https://ditu.amap.com/service/regeo?longitude=121.04925573429551&latitude=31.315590522490712
+// https://ditu.amap.com/service/regeo?longitude=121.04925573429551&latitude=31.315590522490712
 
 let ExampleProvider = MoyaProvider<ExampleAPI>(requestClosure: myRequestClosure, plugins: [myNetworkPlugin])
 
 enum ExampleAPI {
-    case jsonOnline(long:Double, lat:Double)
+    case jsonOnline(long: Double, lat: Double)
 }
 
 extension ExampleAPI: TargetType {
     var baseURL: URL {
         switch self {
-            case let .jsonOnline(long, lat):
-                return URL(string: "https://ditu.amap.com" + "?longitude=\(long)&latitude=\(lat))")!
+        case let .jsonOnline(long, lat):
+            return URL(string: "https://ditu.amap.com" + "?longitude=\(long)&latitude=\(lat))")!
         }
     }
 
     var path: String {
         switch self {
-            case .jsonOnline:
-                return "/service/regeo"
+        case .jsonOnline:
+            return "/service/regeo"
         }
-
     }
 
     var method: Moya.Method {
@@ -40,11 +39,7 @@ extension ExampleAPI: TargetType {
         .requestPlain
     }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         nil
     }
-
-    
 }
-
-
