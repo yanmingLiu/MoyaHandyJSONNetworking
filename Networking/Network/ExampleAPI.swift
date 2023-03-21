@@ -10,7 +10,7 @@ import Moya
 
 // https://ditu.amap.com/service/regeo?longitude=121.04925573429551&latitude=31.315590522490712
 
-let ExampleProvider = MoyaProvider<ExampleAPI>(requestClosure: myRequestClosure, plugins: [myNetworkPlugin])
+let ExampleProvider = MoyaProvider<ExampleAPI>(requestClosure: myRequestClosure, plugins:myPlugins)
 
 enum ExampleAPI {
     case jsonOnline(long: Double, lat: Double)

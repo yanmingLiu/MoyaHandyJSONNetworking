@@ -59,9 +59,11 @@ let myNetworkPlugin = NetworkActivityPlugin.init { changeType, _ in
     }
 }
 
+let myPlugins: [PluginType] = [myNetworkPlugin]
+
 extension MoyaProvider {
     @discardableResult
-    open func request<T: Codable>(_ target: Target,
+    public func request<T: Codable>(_ target: Target,
                                   progress _: ProgressBlock? = .none,
                                   modelType _: T.Type,
                                   completion: @escaping (Result<T?, ResponseError>) -> Void) -> Cancellable
